@@ -1,35 +1,49 @@
+let partidos = [];
+
 async function cargarPartidos() {
-    const res = await fetch("data/partidos.json");
-    const partidos = await res.json();
+    try {
+        const res = await fetch("https://streamhdx.com/eventos.json");
+        const data = await res.json();
 
+        // Filtrar solo los de hoy (opcional)
+        partidos = data;
+
+        renderAgenda(partidos);
+
+    } catch (e) {
+        console.error("Error cargando partidos:", e);
+    }
+}
+
+function renderAgenda(lista) {
     const agenda = document.getElementById("agenda");
+    agenda.innerHTML = "";
 
-    partidos.forEach(p => {
+    lista.forEach(p => {
         const div = document.createElement("div");
         div.className = "match";
 
         div.innerHTML = `
             <strong>${p.home} vs ${p.away}</strong><br>
-            ${p.time}
+            <small>${p.time}</small>
         `;
 
-        div.onclick = () => {
-            document.getElementById("player").src = p.embed;
-        };
+        div.onclick = () => cargarPlayer(p);
 
         agenda.appendChild(div);
     });
 }
 
-function sendMsg() {
-    const input = document.getElementById("msg");
-    const box = document.getElementById("messages");
+function cargarPlayer(partido) {
+    const player = document.getElementById("player");
 
-    const div = document.createElement("div");
-    div.innerText = input.value;
+    // prioridad embed
+    let url = partido.embed || partido.link || "";
 
-    box.appendChild(div);
-    input.value = "";
+    if (!url) {
+        alert("No hay stream disponible");
+        return;
+    }
+
+    player.src = url;
 }
-
-cargarPartidos();
