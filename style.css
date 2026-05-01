@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    height: 100vh;
+}
+
+.agenda {
+    overflow-y: auto;
+    background: #020617;
+    padding: 10px;
+}
+
+.match {
+    padding: 10px;
+    border-bottom: 1px solid #1e293b;
+    cursor: pointer;
+}
+
+.match:hover {
+    background: #1e293b;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    background: #020617;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.input {
+    display: flex;
+}
+
+.input input {
+    flex: 1;
+    padding: 10px;
+}
+
+.input button {
+    padding: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+}
+
+.player iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.6;
+}
