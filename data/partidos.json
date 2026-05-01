@@ -1,0 +1,14 @@
+[
+  {
+    "home": "River",
+    "away": "Boca",
+    "time": "21:00",
+    "embed": "https://example.com/embed1"
+  },
+  {
+    "home": "Barcelona",
+    "away": "Real Madrid",
+    "time": "18:00",
+    "embed": "https://example.com/embed2"
+  }
+]
