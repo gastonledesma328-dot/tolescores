@@ -11,6 +11,7 @@ body {
     height: 100vh;
 }
 
+/* AGENDA */
 .agenda {
     overflow-y: auto;
     background: #020617;
@@ -21,12 +22,18 @@ body {
     padding: 10px;
     border-bottom: 1px solid #1e293b;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .match:hover {
     background: #1e293b;
 }
 
+.match.active {
+    background: #2563eb;
+}
+
+/* CHAT */
 .chat {
     display: flex;
     flex-direction: column;
@@ -39,6 +46,13 @@ body {
     padding: 10px;
 }
 
+.messages div {
+    margin-bottom: 8px;
+    background: #1e293b;
+    padding: 6px;
+    border-radius: 5px;
+}
+
 .input {
     display: flex;
 }
@@ -46,6 +60,8 @@ body {
 .input input {
     flex: 1;
     padding: 10px;
+    border: none;
+    outline: none;
 }
 
 .input button {
@@ -53,6 +69,12 @@ body {
     background: #2563eb;
     color: white;
     border: none;
+    cursor: pointer;
+}
+
+/* PLAYER */
+.player {
+    background: black;
 }
 
 .player iframe {
@@ -61,8 +83,10 @@ body {
     border: none;
 }
 
+/* FOOTER */
 footer {
     text-align: center;
     font-size: 12px;
     opacity: 0.6;
+    padding: 5px;
 }
