@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>ToleScores</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- AGENDA -->
+    <div class="agenda" id="agenda"></div>
+
+    <!-- CHAT -->
+    <div class="chat">
+        <div class="messages" id="messages"></div>
+        <div class="input">
+            <input id="msg" placeholder="Escribe...">
+            <button onclick="sendMsg()">Enviar</button>
+        </div>
+    </div>
+
+    <!-- PLAYER -->
+    <div class="player">
+        <iframe id="player"></iframe>
+    </div>
+
+</div>
+
+<footer>
+    Datos basados en fuentes públicas y streamhdx
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
