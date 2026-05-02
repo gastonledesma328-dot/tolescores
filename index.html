@@ -12,7 +12,6 @@
 <!-- HEADER -->
 <header class="header">
     <div class="logo">⚽ ToleScores</div>
-
     <div class="header-actions">
         <span>🔍</span>
         <span>📅</span>
@@ -20,20 +19,20 @@
     </div>
 </header>
 
-<!-- NAV TABS -->
+<!-- TABS -->
 <div class="tabs">
-    <button class="tab active" onclick="cambiarTab('agenda')">Agenda del Día</button>
-    <button class="tab" onclick="cambiarTab('chat')">Chat</button>
-    <button class="tab" onclick="cambiarTab('live')">Partidos en Vivo 🔴</button>
+    <button class="tab active">Agenda del Día</button>
+    <button class="tab">Chat</button>
+    <button class="tab">Partidos en Vivo 🔴</button>
 </div>
 
 <!-- CONTENIDO -->
 <div class="main">
 
-    <!-- PANEL DESTACADO -->
+    <!-- FEATURED -->
     <section class="featured">
 
-        <!-- PARTIDO DESTACADO -->
+        <!-- MATCH -->
         <div class="featured-match">
             <div class="team">
                 <div class="badge">A</div>
@@ -68,10 +67,8 @@
 
     </section>
 
-    <!-- AGENDA / GRILLA -->
-    <section class="agenda-section" id="agenda-list">
-        <!-- se llena con JS -->
-    </section>
+    <!-- AGENDA -->
+    <section class="agenda-section" id="agenda-list"></section>
 
 </div>
 
@@ -81,14 +78,6 @@
 </footer>
 
 <script src="app.js"></script>
-
-<script>
-/* CAMBIO DE TABS (simple visual) */
-function cambiarTab(tab) {
-    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-    event.target.classList.add("active");
-}
-</script>
 
 </body>
 </html>
