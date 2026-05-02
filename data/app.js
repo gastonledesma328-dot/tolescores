@@ -55,6 +55,9 @@ function renderAgenda(lista) {
 
 /* CARGAR PLAYER */
 function cargarPlayer(partido) {
+    document.getElementById("teamA").innerText = partido.home;
+    document.getElementById("teamB").innerText = partido.away;
+    document.getElementById("score").innerText = "LIVE";
     const player = document.getElementById("player");
 
     let url = partido.embed || partido.link || "";
