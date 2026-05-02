@@ -1,14 +1,7 @@
 let partidos = [];
 let historial = [];
 
-/* NORMALIZAR TEXTO */
-function normalizar(texto) {
-    return texto
-        .toLowerCase()
-        .replace(/[^a-z0-9]/g, "");
-}
-
-/* CARGAR PARTIDOS DESDE STREAMHDX */
+/* CARGAR PARTIDOS */
 async function cargarPartidos() {
     try {
         const res = await fetch("https://streamhdx.com/eventos.json");
@@ -18,46 +11,37 @@ async function cargarPartidos() {
 
         renderAgenda(partidos);
 
-        // Auto cargar primer partido
         if (partidos.length > 0) {
             cargarPlayer(partidos[0]);
         }
 
     } catch (e) {
-        console.error("Error cargando partidos:", e);
+        console.error("Error:", e);
     }
 }
 
 /* RENDER AGENDA */
 function renderAgenda(lista) {
-    const agenda = document.getElementById("agenda");
-    agenda.innerHTML = "";
+    const cont = document.getElementById("agenda-list");
+    cont.innerHTML = "";
 
-    lista.forEach((p, i) => {
+    lista.forEach(p => {
         const div = document.createElement("div");
-        div.className = "match";
+        div.className = "match-card";
 
         div.innerHTML = `
             <strong>${p.home} vs ${p.away}</strong><br>
             <small>${p.time}</small>
         `;
 
-        div.onclick = () => {
-            document.querySelectorAll(".match").forEach(m => m.classList.remove("active"));
-            div.classList.add("active");
+        div.onclick = () => cargarPlayer(p);
 
-            cargarPlayer(p);
-        };
-
-        agenda.appendChild(div);
+        cont.appendChild(div);
     });
 }
 
-/* CARGAR PLAYER */
+/* PLAYER */
 function cargarPlayer(partido) {
-    document.getElementById("teamA").innerText = partido.home;
-    document.getElementById("teamB").innerText = partido.away;
-    document.getElementById("score").innerText = "LIVE";
     const player = document.getElementById("player");
 
     let url = partido.embed || partido.link || "";
@@ -67,11 +51,14 @@ function cargarPlayer(partido) {
         return;
     }
 
-    // intento autoplay
     player.src = url + "?autoplay=1";
+
+    document.getElementById("teamA").innerText = partido.home;
+    document.getElementById("teamB").innerText = partido.away;
+    document.getElementById("score").innerText = "LIVE";
 }
 
-/* CHAT LOCAL */
+/* CHAT */
 function sendMsg() {
     const input = document.getElementById("msg");
     const msg = input.value.trim();
