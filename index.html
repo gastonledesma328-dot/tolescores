@@ -3,36 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <title>ToleScores</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">⚽ ToleScores</div>
 
-    <!-- AGENDA -->
-    <div class="agenda" id="agenda"></div>
+    <div class="header-actions">
+        <span>🔍</span>
+        <span>📅</span>
+        <span>👤</span>
+    </div>
+</header>
 
-    <!-- CHAT -->
-    <div class="chat">
-        <div class="messages" id="messages"></div>
-        <div class="input">
-            <input id="msg" placeholder="Escribe...">
-            <button onclick="sendMsg()">Enviar</button>
+<!-- NAV TABS -->
+<div class="tabs">
+    <button class="tab active" onclick="cambiarTab('agenda')">Agenda del Día</button>
+    <button class="tab" onclick="cambiarTab('chat')">Chat</button>
+    <button class="tab" onclick="cambiarTab('live')">Partidos en Vivo 🔴</button>
+</div>
+
+<!-- CONTENIDO -->
+<div class="main">
+
+    <!-- PANEL DESTACADO -->
+    <section class="featured">
+
+        <!-- PARTIDO DESTACADO -->
+        <div class="featured-match">
+            <div class="team">
+                <div class="badge">A</div>
+                <span id="teamA">Equipo A</span>
+            </div>
+
+            <div class="score">
+                <span id="score">VS</span>
+                <div class="live">LIVE</div>
+            </div>
+
+            <div class="team">
+                <div class="badge red">B</div>
+                <span id="teamB">Equipo B</span>
+            </div>
         </div>
-    </div>
 
-    <!-- PLAYER -->
-    <div class="player">
-        <iframe id="player" allowfullscreen></iframe>
-    </div>
+        <!-- PLAYER -->
+        <div class="featured-player">
+            <iframe id="player" allowfullscreen></iframe>
+        </div>
+
+        <!-- CHAT -->
+        <div class="featured-chat">
+            <div class="chat-messages" id="messages"></div>
+
+            <div class="chat-input">
+                <input id="msg" placeholder="Comentar...">
+                <button onclick="sendMsg()">➤</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- AGENDA / GRILLA -->
+    <section class="agenda-section" id="agenda-list">
+        <!-- se llena con JS -->
+    </section>
 
 </div>
 
+<!-- FOOTER -->
 <footer>
-    Datos basados en fuentes públicas y streamhdx
+    Datos basados en fuentes públicas y streamhdx · ToleScores
 </footer>
 
 <script src="app.js"></script>
+
+<script>
+/* CAMBIO DE TABS (simple visual) */
+function cambiarTab(tab) {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    event.target.classList.add("active");
+}
+</script>
+
 </body>
 </html>
